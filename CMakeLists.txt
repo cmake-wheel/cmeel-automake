@@ -8,8 +8,8 @@ include(ExternalProject)
 ExternalProject_Add(
   automake
   URL "https://ftpmirror.gnu.org/gnu/automake/automake-${AUTOMAKE_VERSION}.tar.xz"
-      DOWNLOAD_EXTRACT_TIMESTAMP
-      ON
+  URL_HASH "SHA1=32fb36e73568271ff506b60c55a6170b67681375"
+  DOWNLOAD_EXTRACT_TIMESTAMP ON
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
