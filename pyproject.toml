@@ -12,6 +12,7 @@ version = "1.16.5"
 [project.urls]
 homepage = "https://github.com/cmake-wheel/cmeel-automake"
 repository = "https://github.com/cmake-wheel/cmeel-automake.git"
+upstream = "https://www.gnu.org/software/automake/"
 
 [tool.cmeel]
 build-number = 2
