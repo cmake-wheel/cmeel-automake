@@ -1,8 +1,9 @@
 [build-system]
 build-backend = "cmeel"
-requires = ["cmeel[build]"]
+requires = ["cmeel-autoconf", "cmeel[build]"]
 
 [project]
+dependencies = ["cmeel-autoconf"]
 description = "cmeel distribution for automake"
 license = "GPL-3.0-or-later"
 name = "cmeel-automake"
