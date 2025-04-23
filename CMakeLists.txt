@@ -7,6 +7,8 @@ set(SHA256 f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469)
 
 project("cmeel-${NAME}" VERSION "${VERSION}")
 
+find_program(AUTOCONF autoconf)
+
 include(ExternalProject)
 ExternalProject_Add(
   ${NAME}
@@ -15,6 +17,7 @@ ExternalProject_Add(
   DOWNLOAD_EXTRACT_TIMESTAMP ON
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
+  PATCH_COMMAND "head" "${AUTOCONF}"
   BUILD_COMMAND "make"
   # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
