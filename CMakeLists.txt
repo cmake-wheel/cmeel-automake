@@ -17,7 +17,9 @@ ExternalProject_Add(
   DOWNLOAD_EXTRACT_TIMESTAMP ON
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
-  PATCH_COMMAND "head" "${AUTOCONF}"
+  PATCH_COMMAND
+    "sed" "-i.bak" "s=#! /opt/homebrew/bin/perl=#! /usr/bin/env perl="
+    "${AUTOCONF}"
   BUILD_COMMAND "make"
   # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
