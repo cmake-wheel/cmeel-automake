@@ -16,7 +16,7 @@ ExternalProject_Add(
   URL_HASH "SHA256=${SHA256}"
   DOWNLOAD_EXTRACT_TIMESTAMP ON
   BUILD_IN_SOURCE ON
-  COMMAND "${AUTOCONF}" "--help"
+  PATCH_COMMAND "${AUTOCONF}" "--help"
   CONFIGURE_COMMAND "${CMAKE_COMMAND}" "-E" "env" "AUTOCONF=${AUTOCONF}"
                     "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
