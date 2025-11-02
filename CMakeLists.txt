@@ -30,7 +30,7 @@ ExternalProject_Add(
     "AUTOCONF=${_cmeel_prefix}/bin/autoconf"
     "AUTOHEADER=${_cmeel_prefix}/bin/autoheader"
     "AUTOM4TE=${_cmeel_prefix}/bin/autom4te" "AC_MACRODIR=${_autoconf_share}"
-    "--prefix=${CMAKE_INSTALL_PREFIX}" "--datarootdir=${_cmeel_prefix}/share"
+    "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
                 # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
