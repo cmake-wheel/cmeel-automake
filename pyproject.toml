@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "cmeel"
-requires = ["cmeel[build]"]
+requires = ["cmeel-autoconf", "cmeel-m4", "cmeel[build]"]
 
 [project]
 description = "cmeel distribution for automake"
