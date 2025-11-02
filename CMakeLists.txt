@@ -9,8 +9,7 @@ project("cmeel-${NAME}" VERSION "${VERSION}")
 
 find_package(Python REQUIRED COMPONENTS Interpreter)
 
-set(_sp
-    "lib/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/site-packages")
+set(_sp "lib/python3.${Python_VERSION_MINOR}/site-packages")
 set(_cmeel_prefix "$ENV{CMAKE_PREFIX_PATH}/${_sp}/cmeel.prefix")
 
 file(READ "${_cmeel_prefix}/bin/autoconf" toto LIMIT 30)
