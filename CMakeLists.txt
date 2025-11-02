@@ -7,10 +7,7 @@ set(SHA1 32fb36e73568271ff506b60c55a6170b67681375)
 
 project("cmeel-${NAME}" VERSION "${VERSION}")
 
-find_package(Python REQUIRED COMPONENTS Interpreter)
-
-set(_sp "lib/python3.${Python_VERSION_MINOR}/site-packages")
-set(_cmeel_prefix "$ENV{CMAKE_PREFIX_PATH}/${_sp}/cmeel.prefix")
+set(_cmeel_prefix "$ENV{CMAKE_PREFIX_PATH}")
 if(IS_DIRECTORY _cmeel_prefix)
   message(STATUS "ok ${_cmeel_prefix}")
 else()
