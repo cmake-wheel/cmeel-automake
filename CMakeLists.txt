@@ -30,7 +30,7 @@ ExternalProject_Add(
   CONFIGURE_COMMAND
     ${CMAKE_COMMAND} -E env
     "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}"
-    "PATH=${_cmeel_prefix}/bin:$ENV{PATH}" "./configure"
+    "PATH=${_cmeel_prefix}/bin:/usr/local/bin:$ENV{PATH}" "./configure"
     "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
   # TEST_COMMAND "make" "check"
