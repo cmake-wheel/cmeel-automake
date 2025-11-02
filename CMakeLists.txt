@@ -12,6 +12,8 @@ set(_cmeel_prefix_rel
     "lib/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/site-packages/cmeel.prefix"
 )
 set(_cmeel_prefix "")
+message(WARNING "first ${CMAKE_PREFIX_PATH}")
+message(WARNING "second $ENV{CMAKE_PREFIX_PATH}")
 foreach(_prefix IN LISTS CMAKE_PREFIX_PATH)
   message(STATUS "looking for ${_cmeel_prefix_rel} in ${_prefix}")
   set(_candidate "${_prefix}/${_cmeel_prefix_rel}")
