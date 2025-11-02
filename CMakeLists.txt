@@ -20,6 +20,14 @@ foreach(_prefix IN LISTS CMAKE_PREFIX_PATH)
   endif()
 endforeach()
 
+file(READ "${_cmeel_prefix}/bin/autoconf" toto LIMIT 30)
+message(WARNING "toto: ${toto}")
+
+find_program(
+  AUTOCONF_EXECUTABLE
+  NAMES autoconf
+  HINTS "${_cmeel_prefix}/bin" REQUIRED)
+
 include(ExternalProject)
 ExternalProject_Add(
   ${NAME}
@@ -30,9 +38,13 @@ ExternalProject_Add(
   CONFIGURE_COMMAND
     ${CMAKE_COMMAND} -E env
     "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}"
-    "PATH=${_cmeel_prefix}/bin:/usr/local/bin:$ENV{PATH}" "./configure"
+    "PATH=${_cmeel_prefix}/bin:$ENV{PATH}" "autoconf" "--version"
+  BUILD_COMMAND
+    ${CMAKE_COMMAND} -E env
+    "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}"
+    "PATH=${_cmeel_prefix}/bin:$ENV{PATH}" "./configure"
     "--prefix=${CMAKE_INSTALL_PREFIX}"
-  BUILD_COMMAND "make"
+  TEST_COMMAND "make"
   # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
 
