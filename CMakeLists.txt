@@ -29,6 +29,7 @@ ExternalProject_Add(
     "AUTOCONF=${_cmeel_prefix}/bin/autoconf"
     "AUTOHEADER=${_cmeel_prefix}/bin/autoheader"
     "AUTOM4TE=${_cmeel_prefix}/bin/autom4te" "M4=${_cmeel_prefix}/bin/m4"
+    "AUTOM4TE_CFG=${_cmeel_prefix}/share/autoconf/autom4te.cfg"
     "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
                 # TEST_COMMAND "make" "check"
