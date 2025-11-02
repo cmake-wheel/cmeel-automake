@@ -23,8 +23,13 @@ ExternalProject_Add(
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND
     ${CMAKE_COMMAND} -E env
-    "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}" "./configure"
-    "--prefix=${CMAKE_INSTALL_PREFIX}"
+    "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}"
+    "autom4te_perllibdir=${_cmeel_prefix}/share/autoconf"
+    "trailer_m4=${_cmeel_prefix}/share/autoconf/autoconf/trailer.m4"
+    "AUTOCONF=${_cmeel_prefix}/bin/autoconf"
+    "AUTOHEADER=${_cmeel_prefix}/bin/autoheader"
+    "AUTOM4TE=${_cmeel_prefix}/bin/autom4te" "M4=${_cmeel_prefix}/bin/m4"
+    "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
                 # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
