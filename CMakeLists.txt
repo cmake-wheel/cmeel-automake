@@ -22,9 +22,11 @@ ExternalProject_Add(
     "./configure" "AUTOM4TE_LIBDIR=${_autoconf_share}"
     "AUTOM4TE_CFG=${_autoconf_share}/autom4te.cfg"
     "autom4te_perllibdir=${_autoconf_share}" "M4=${_cmeel_prefix}/bin/m4"
+    "trailer_m4=${_autoconf_share}/autoconf/trailer.m4"
     "AUTOCONF=${_cmeel_prefix}/bin/autoconf"
     "AUTOHEADER=${_cmeel_prefix}/bin/autoheader"
-    "AUTOM4TE=${_cmeel_prefix}/bin/autom4te" "--prefix=${CMAKE_INSTALL_PREFIX}"
+    "AUTOM4TE=${_cmeel_prefix}/bin/autom4te" "AC_MACRODIR=${_autoconf_share}"
+    "--prefix=${CMAKE_INSTALL_PREFIX}" "--datarootdir=${_cmeel_prefix}/share"
   BUILD_COMMAND "make"
                 # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
