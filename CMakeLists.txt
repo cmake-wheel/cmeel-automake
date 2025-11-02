@@ -21,9 +21,9 @@ ExternalProject_Add(
     ${CMAKE_COMMAND} -E copy "${_autoconf_share}/autom4te.cfg"
     "${CMAKE_BINARY_DIR}/autom4te.cfg" && "sed" "-i.bak"
     "s|args: --prepend-include '[^']*'|args: --prepend-include '${_autoconf_share}'|g"
-    ${CMAKE_BINARY_DIR}/autom4te.cfg" &&
-    ${CMAKE_COMMAND} -E env "PERL5LIB=${_autoconf_share}:$ENV{PERL5LIB}"
-    "./configure" "AUTOM4TE_LIBDIR=${_autoconf_share}"
+    "${CMAKE_BINARY_DIR}/autom4te.cfg" && ${CMAKE_COMMAND} -E env
+    "PERL5LIB=${_autoconf_share}:$ENV{PERL5LIB}" "./configure"
+    "AUTOM4TE_LIBDIR=${_autoconf_share}"
     "AUTOM4TE_CFG=${CMAKE_BINARY_DIR}/autom4te.cfg"
     "autom4te_perllibdir=${_autoconf_share}" "M4=${_cmeel_prefix}/bin/m4"
     "trailer_m4=${_autoconf_share}/autoconf/trailer.m4"
