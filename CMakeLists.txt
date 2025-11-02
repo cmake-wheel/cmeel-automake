@@ -13,6 +13,7 @@ set(_cmeel_prefix_rel
 )
 set(_cmeel_prefix "")
 foreach(_prefix IN LISTS CMAKE_PREFIX_PATH)
+  message(STATUS "looking for ${_cmeel_prefix_rel} in ${_prefix}")
   set(_candidate "${_prefix}/${_cmeel_prefix_rel}")
   if(EXISTS "${_candidate}")
     set(_cmeel_prefix "${_candidate}")
