@@ -8,19 +8,11 @@ set(SHA1 32fb36e73568271ff506b60c55a6170b67681375)
 project("cmeel-${NAME}" VERSION "${VERSION}")
 
 set(_cmeel_prefix "$ENV{CMAKE_PREFIX_PATH}")
-if(IS_DIRECTORY _cmeel_prefix)
+if(IS_DIRECTORY ${_cmeel_prefix})
   message(STATUS "ok ${_cmeel_prefix}")
 else()
   message(STATUS "ko ${_cmeel_prefix}")
 endif()
-
-file(READ "${_cmeel_prefix}/bin/autoconf" toto LIMIT 30)
-message(WARNING "toto: ${toto}")
-
-find_program(
-  AUTOCONF_EXECUTABLE
-  NAMES autoconf
-  HINTS "${_cmeel_prefix}/bin" REQUIRED)
 
 include(ExternalProject)
 ExternalProject_Add(
@@ -31,15 +23,10 @@ ExternalProject_Add(
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND
     ${CMAKE_COMMAND} -E env
-    "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}"
-    "PATH=${_cmeel_prefix}/bin:$ENV{PATH}" "autoconf" "--version"
-  BUILD_COMMAND
-    ${CMAKE_COMMAND} -E env
-    "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}"
-    "PATH=${_cmeel_prefix}/bin:$ENV{PATH}" "./configure"
+    "PERL5LIB=${_cmeel_prefix}/share/autoconf:$ENV{PERL5LIB}" "./configure"
     "--prefix=${CMAKE_INSTALL_PREFIX}"
-  TEST_COMMAND "make"
-  # TEST_COMMAND "make" "check"
+  BUILD_COMMAND "make"
+                # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
 
 # dummy file for install target
