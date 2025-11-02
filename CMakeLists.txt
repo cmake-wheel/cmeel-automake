@@ -18,9 +18,12 @@ ExternalProject_Add(
   DOWNLOAD_EXTRACT_TIMESTAMP ON
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND
+    "sed"
+    "s|args: --prepend-include '[^']*'|args: --prepend-include '${_autoconf_share}'|g"
+    "${_autoconf_share}/autom4te.cfg" "${CMAKE_BINARY_DIR}/autom4te.cfg" &&
     ${CMAKE_COMMAND} -E env "PERL5LIB=${_autoconf_share}:$ENV{PERL5LIB}"
     "./configure" "AUTOM4TE_LIBDIR=${_autoconf_share}"
-    "AUTOM4TE_CFG=${_autoconf_share}/autom4te.cfg"
+    "AUTOM4TE_CFG=${CMAKE_BINARY_DIR}/autom4te.cfg"
     "autom4te_perllibdir=${_autoconf_share}" "M4=${_cmeel_prefix}/bin/m4"
     "trailer_m4=${_autoconf_share}/autoconf/trailer.m4"
     "AUTOCONF=${_cmeel_prefix}/bin/autoconf"
