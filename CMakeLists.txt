@@ -24,7 +24,6 @@ ExternalProject_Add(
     "${CMAKE_BINARY_DIR}/autom4te.cfg" && ${CMAKE_COMMAND} -E env
     "PERL5LIB=${_autoconf_share}:$ENV{PERL5LIB}" "--" "./configure"
     "AUTOM4TE_CFG=${CMAKE_BINARY_DIR}/autom4te.cfg"
-    "autom4te_perllibdir=${_autoconf_share}"
     "trailer_m4=${_autoconf_share}/autoconf/trailer.m4"
     "AUTOCONF=${_cmeel_prefix}/bin/autoconf"
     "AUTOHEADER=${_cmeel_prefix}/bin/autoheader"
