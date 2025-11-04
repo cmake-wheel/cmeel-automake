@@ -30,7 +30,7 @@ ExternalProject_Add(
     "AUTOM4TE=${_cmeel_prefix}/bin/autom4te" "M4=${_cmeel_prefix}/bin/m4"
     "--prefix=${CMAKE_INSTALL_PREFIX}"
   BUILD_COMMAND "make"
-                # TEST_COMMAND "make" "check"
+  # TEST_COMMAND "make" "check"
   INSTALL_COMMAND "make" "install")
 
 # dummy file for install target
