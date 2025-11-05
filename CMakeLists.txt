@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.30)
 
 set(NAME automake)
-set(VERSION 1.16.5)
+set(VERSION 1.18)
 set(EXT tar.xz)
-set(SHA1 32fb36e73568271ff506b60c55a6170b67681375)
+set(SHA256 5bdccca96b007a7e344c24204b9b9ac12ecd17f5971931a9063bdee4887f4aaf)
 
 project("cmeel-${NAME}" VERSION "${VERSION}")
 
@@ -14,7 +14,7 @@ include(ExternalProject)
 ExternalProject_Add(
   ${NAME}
   URL "https://ftpmirror.gnu.org/gnu/${NAME}/${NAME}-${VERSION}.${EXT}"
-  URL_HASH "SHA1=${SHA1}"
+  URL_HASH "SHA256=${SHA256}"
   DOWNLOAD_EXTRACT_TIMESTAMP ON
   BUILD_IN_SOURCE ON
   CONFIGURE_COMMAND
@@ -34,4 +34,4 @@ ExternalProject_Add(
   INSTALL_COMMAND "make" "install")
 
 # dummy file for install target
-install(FILES "README.md" DESTINATION "share/cmeel-${NAME}/ ")
+install(FILES "README.md" DESTINATION "share/cmeel-${NAME}/")
